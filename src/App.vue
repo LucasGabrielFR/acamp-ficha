@@ -1,14 +1,14 @@
 <template>
-  <StepperComponent />
+  <PreFichaForm/>
 </template>
 
 <script>
-import StepperComponent from './components/StepperComponent.vue';
+import PreFichaForm from './components/PreFichaForm.vue';
 
 export default {
   name: 'App',
   components: {
-    StepperComponent
+    PreFichaForm,
   }
 }
 </script>
