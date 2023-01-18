@@ -31,7 +31,7 @@
             <h4><b>FICHA DE PRÉ-INSCRIÇÃO</b></h4>
         </div>
         <div class="container">
-            <form action="" method="post">
+            <form action="" method="post" id="form" name="form" onsubmit="validaFormulario(event)">
                 <div class="row g-3">
                     <!-- row -->
                     <div class="form-group col-md-7">
@@ -40,7 +40,10 @@
                     </div>
                     <div class="form-group col-md-5">
                         <label for="cpf"><b>CPF:</b></label>
-                        <input type="text" class="form-control" id="cpf" placeholder="CPF" name="cpf" required>
+                        <input type="text" class="form-control" maxlength="14" id="cpf" placeholder="XXX.XXX.XXX-XX" name="cpf" OnKeyPress="formatar('###.###.###-##', this)" required>
+                        <div class="alert alert-danger mt-1" role="alert" id="cpf-error" style="display: none">
+                            CPF incorreto ou inválido!
+                        </div>
                     </div>
                     <!-- end row -->
 
@@ -79,7 +82,7 @@
                         <label for="phone"><b>Telefone(whatsapp):</b></label>
                         <div class="input-group">
                             <div class="input-group-text"><i class="fab fa-whatsapp"></i></div>
-                            <input type="text" class="form-control" id="phone" placeholder="Telefone(Whatsapp)" name="phone" required>
+                            <input type="text" class="form-control" id="phone" placeholder="XX XXXXX-XXXX" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$" name="phone" OnKeyPress="formatar('## #####-####', this)" required>
                         </div>
                     </div>
                     <div class="form-group col-md-3">
@@ -133,7 +136,7 @@
                         <label for="parish"><b>Paróquia que participa?</b></label>
                         <input type="text" class="form-control" id="parish" placeholder="Paróquia" name="parish">
                     </div>
-                    <div class="col-md-3">
+                    <div class="form-group col-md-3">
                         <div class="container" style="border: solid 1px; border-radius: 8px;">
                             <label><b>Formação:</b></label>
                             <div class="form-check">
@@ -156,48 +159,47 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <div class="container" style="border: solid 1px; border-radius: 8px;">
-                            <label><b>Civil:</b></label>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="1" id="is_married" name="is_married">
-                                <label class="form-check-label" for="is_married">
-                                    É casado
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="1" id="is_second_union" name="is_second_union">
-                                <label class="form-check-label" for="is_second_union">
-                                    Vive em segunda união
-                                </label>
-                            </div>
-                        </div>
+                    <div class="col-md-3 form-group">
+                        <label><b>Estado Civil</b></label>
+                        <select name="marital_status" id="marital_status" class="form-select" onchange="handleChange(this)" required>
+                            <option>Selecione</option>
+                            <option value="0">Solteiro</option>
+                            <option value="1">Casado</option>
+                            <option value="2">Separado</option>
+                            <option value="3">Divorciado</option>
+                            <option value="4">Viúvo</option>
+                            <option value="5">Amasiado</option>
+                            <option value="6">Padre</option>
+                            <option value="7">Freira</option>
+                        </select>
                     </div>
                     <!-- end row -->
 
                     <!-- row -->
-                    <div class="form-group col-md-5">
-                        <label for="spouse_name"><b>Nome do(a) esposo(a):</b></label>
-                        <input type="text" class="form-control" id="spouse_name" placeholder="Nome do(a) esposo(a):" name="spouse_name" required>
-                    </div>
-                    <div class="form-group col-md-3">
-                        <div class="container" style="border: solid 1px; border-radius: 8px;">
-                            <label for="gender"><b>Ele(a) já é campista?</b></label>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="is_spouse_camper" id="is_spouse_camper_yes" required>
-                                <label class="form-check-label" for="is_spouse_camper_yes">
-                                    Sim
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="is_spouse_camper" id="is_spouse_camper_no" required>
-                                <label class="form-check-label" for="is_spouse_camper_no">
-                                    Não
-                                </label>
+                    <div id="spouse" style="display: none;">
+                        <div class="form-group col-md-5 p-1">
+                            <label for="spouse_name"><b>Nome do(a) esposo(a):</b></label>
+                            <input type="text" class="form-control" id="spouse_name" placeholder="Nome do(a) esposo(a):" name="spouse_name">
+                        </div>
+                        <div class="form-group col-md-3 p-1">
+                            <div class="container" style="border: solid 1px; border-radius: 8px;">
+                                <label for="gender"><b>Ele(a) já é campista?</b></label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="is_spouse_camper" id="is_spouse_camper_yes">
+                                    <label class="form-check-label" for="is_spouse_camper_yes">
+                                        Sim
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="is_spouse_camper" id="is_spouse_camper_no">
+                                    <label class="form-check-label" for="is_spouse_camper_no">
+                                        Não
+                                    </label>
+                                </div>
                             </div>
                         </div>
+                        <div class="col-md-4"></div>
                     </div>
-                    <div class="col-md-4"></div>
                     <!-- end row -->
 
                     <!-- row -->
@@ -205,13 +207,13 @@
                         <div class="container" style="border: solid 1px; border-radius: 8px;">
                             <label for="gender"><b>Você tem algum vício?</b></label>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="is_addicted" id="is_addicted_yes" required>
+                                <input class="form-check-input" type="radio" name="is_addicted" id="is_addicted_yes" value="1" onchange="handleChange(this)" required>
                                 <label class="form-check-label" for="is_addicted_yes">
                                     Sim
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="is_addicted" id="is_addicted_no" required>
+                                <input class="form-check-input" type="radio" name="is_addicted" id="is_addicted_no" value="0" onchange="handleChange(this)" required>
                                 <label class="form-check-label" for="is_addicted_no">
                                     Não
                                 </label>
@@ -219,8 +221,10 @@
                         </div>
                     </div>
                     <div class="form-group col-md-4">
-                        <label for="addiction"><b>Qual vício?</b></label>
-                        <input type="text" class="form-control" id="addiction" placeholder="Vício" name="addiction" required>
+                        <div id="div-addiction" style="display: none;">
+                            <label for="addiction"><b>Qual vício?</b></label>
+                            <input type="text" class="form-control" id="addiction" placeholder="Vício" name="addiction">
+                        </div>
                     </div>
                     <div class="col-md-5"></div>
                     <!-- end row -->
@@ -230,13 +234,13 @@
                         <div class="container" style="border: solid 1px; border-radius: 8px;">
                             <label for="gender"><b>Você tem alguma restrição médica?</b></label>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="has_medical_attention" id="has_medical_attention_yes" required>
+                                <input class="form-check-input" type="radio" name="has_medical_attention" id="has_medical_attention_yes" value="1" onchange="handleChange(this)" required>
                                 <label class="form-check-label" for="has_medical_attention_yes">
                                     Sim
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="has_medical_attention" id="has_medical_attention_no" required>
+                                <input class="form-check-input" type="radio" name="has_medical_attention" id="has_medical_attention_no" value="0" onchange="handleChange(this)" required>
                                 <label class="form-check-label" for="has_medical_attention_no">
                                     Não
                                 </label>
@@ -244,15 +248,177 @@
                         </div>
                     </div>
                     <div class="form-group col-md-4">
-                        <label for="addiction"><b>Quais restrições?</b></label>
-                        <textarea class="form-control" name="medical_attention" id="medical_attention" cols="30" rows="2"></textarea>
+                        <div id="div-medical" style="display: none;">
+                            <label for="medical_attention"><b>Quais restrições?</b></label>
+                            <textarea class="form-control" name="medical_attention" id="medical_attention" cols="30" rows="2"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-5"></div>
+                    <!-- end row -->
+
+                    <!-- row -->
+                    <div class="form-group col-md-4">
+                        <div class="container" style="border: solid 1px; border-radius: 8px;">
+                            <label><b>Você tem algum parente ou amigo que fez o acampamento?</b></label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="has_familiar_camper" id="has_familiar_camper_yes" value="1" onchange="handleChange(this)" required>
+                                <label class="form-check-label" for="has_familiar_camper_yes">
+                                    Sim
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="has_familiar_camper" id="has_familiar_camper_no" value="0" onchange="handleChange(this)" required>
+                                <label class="form-check-label" for="has_familiar_camper_no">
+                                    Não
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8"></div>
+                    <!-- end row -->
+
+                    <div id="parents" style="display: none;">
+                        <!-- row -->
+                        <div class="form-group col-md-6 p-1">
+                            <label for="familiar_1"><b>Quem?</b></label>
+                            <input type="text" class="form-control" id="familiar_1" placeholder="Nome do familiar ou amigo" name="familiar_1">
+                        </div>
+                        <div class="form-group col-md-6 p-1">
+                            <label for="familiar_1"><b>Grau de parentesco:</b></label>
+                            <input type="text" class="form-control" id="relationship_1" placeholder="Grau de parentesco" name="relationship_1">
+                        </div>
+                        <!-- end row -->
+                        <!-- row -->
+                        <div class="form-group col-md-6 p-1">
+                            <label for="familiar_2"><b>Quem?</b></label>
+                            <input type="text" class="form-control" id="familiar_2" placeholder="Nome do familiar ou amigo" name="familiar_2">
+                        </div>
+                        <div class="form-group col-md-6 p-1">
+                            <label for="familiar_2"><b>Grau de parentesco:</b></label>
+                            <input type="text" class="form-control" id="relationship_2" placeholder="Grau de parentesco" name="relationship_2">
+                        </div>
+                        <!-- end row -->
+                        <!-- row -->
+                        <div class="form-group col-md-6 p-1">
+                            <label for="familiar_3"><b>Quem?</b></label>
+                            <input type="text" class="form-control" id="familiar_3" placeholder="Nome do familiar ou amigo" name="familiar_3">
+                        </div>
+                        <div class="form-group col-md-6 p-1">
+                            <label for="familiar_3"><b>Grau de parentesco:</b></label>
+                            <input type="text" class="form-control" id="relationship_3" placeholder="Grau de parentesco" name="relationship_3">
+                        </div>
+                        <!-- end row -->
+                    </div>
+
+
+                    <!-- row -->
+                    <div class="form-group col-md-4">
+                        <div class="container" style="border: solid 1px; border-radius: 8px;">
+                            <label><b>Você já participou de algum retiro?</b></label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="is_retreatant" id="is_retreatant_yes" value="1" onchange="handleChange(this)" required>
+                                <label class="form-check-label" for="is_retreatant_yes">
+                                    Sim
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="is_retreatant" id="is_retreatant_no" value="0" onchange="handleChange(this)" required>
+                                <label class="form-check-label" for="is_retreatant_no">
+                                    Não
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-8">
+                        <div id="div-retreat" style="display: none;">
+                            <label for=""><b>Qual?</b></label>
+                            <input type="text" class="form-control" id="retreat" placeholder="Qual retiro?" name="retreat">
+                        </div>
                     </div>
                     <!-- end row -->
+
+                    <!-- row -->
+                    <div class="form-group col-md-6">
+                        <label for="how_find_camp"><b>Como ficou sabendo do acampamento?</b></label>
+                        <textarea class="form-control" name="how_find_camp" id="how_find_camp" cols="30" rows="2" required></textarea>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="why_camp"><b>O que levou você a desejar participar do acampamento?</b></label>
+                        <textarea class="form-control" name="why_camp" id="why_camp" cols="30" rows="2" required></textarea>
+                    </div>
+                    <!-- end row -->
+
+                    <!-- row -->
+                    <div class="form-group col-md-4">
+                        <div class="container" style="border: solid 1px; border-radius: 8px;">
+                            <label><b>Você deseja se inscrever para qual modalidade?</b></label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="modality" id="modality_mirim" required>
+                                <label class="form-check-label" for="modality_mirim">
+                                    Mirim (de 11 a 13 anos)
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="modality" id="modality_fac" required>
+                                <label class="form-check-label" for="modality_fac">
+                                    FAC (de 15 a 18 anos)
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="modality" id="modality_juvenil" required>
+                                <label class="form-check-label" for="modality_juvenil">
+                                    Juvenil (de 19 a 24 anos)
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="modality" id="modality_senior" required>
+                                <label class="form-check-label" for="modality_senior">
+                                    Sênior (a partir de 25 anos)
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="modality" id="modality_casais" required>
+                                <label class="form-check-label" for="modality_casais">
+                                    Casais
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8"></div>
+                    <!-- end row -->
+                    <br>
+                    <div class="row">
+                        <p><b>Obs: No acampamento acontecem atividades físicas moderadas, por isso não é permitido a participação de
+                                gestantes e pessoas com problemas de saúde com restrição médica</b></p>
+                    </div>
+
+                    <div class="col-md-4"></div>
+                    <div class="form-group col-md-4">
+                        <div class="container text-center" style="border: solid 1px; border-radius: 8px;">
+                            <b>O Titular autoriza a utilização dos seus dados pessoais em nossa base de dados,
+                                onde serão utilizados unicamente para os fins do acampamento e estes dados não serão
+                                expostos publicamente em hipotese alguma.</b>
+                            <div class="form-check">
+                                <input class="form-check-input" style="background-color: red;" type="checkbox" value="1" id="accept" name="accept" onclick="handleAccept(this)">
+                                <label class="form-check-label" for="accept">
+                                    Eu aceito conceder meus dados pessoais.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4"></div>
+                    <br>
+                    <div class="col-md-4"></div>
+                    <div class="form-group col-md-4 text-center">
+                        <button type="submit" id="btn-submit" class="btn btn-success" disabled>Enviar Pré-Ficha</button>
+                    </div>
+                    <div class="col-md-4"></div>
                 </div>
             </form>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <script src="/assets/js/functions.js"></script>
 </body>
 
