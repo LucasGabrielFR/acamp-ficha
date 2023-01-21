@@ -31,7 +31,8 @@
             <h4><b>FICHA DE PRÉ-INSCRIÇÃO</b></h4>
         </div>
         <div class="container">
-            <form action="" method="post" id="form" name="form" onsubmit="validaFormulario(event)">
+            <form action="" method="post" id="form" name="form">
+                <input type="hidden" name="ip" id="ip" value="<?php echo $_SERVER['REMOTE_ADDR'] ?>">
                 <div class="row g-3">
                     <!-- row -->
                     <div class="form-group col-md-7">

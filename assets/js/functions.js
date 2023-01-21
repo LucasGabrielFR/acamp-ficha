@@ -97,17 +97,56 @@ function validaCPF(strCPF) {
 }
 
 $("form").submit(function (event) {
+  event.preventDefault();
+  const apiAcampAdmin = "http://localhost:8989/register";
   const cpf = document.getElementById("cpf");
   const btnSubmit = document.getElementById("btn-submit");
   btnSubmit.disabled = true;
 
   if (!validaCPF(cpf.value)) {
-    event.preventDefault();
     $("#cpf").focus();
     $("#cpf-error").css({ display: "block" });
     btnSubmit.disabled = false;
+  } else {
+    var formData = serializeForm();
+
+    fetch(apiAcampAdmin, {
+      method: "POST",
+      body: JSON.stringify(formData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }
 });
+
+function getIp() {
+  const ip = $.getJSON("https://api.ipify.org?format=json", function (data) {
+    return data.ip;
+  });
+
+  return ip;
+}
+
+function serializeForm() {
+  var form = document.getElementById("form");
+  var elements = form.elements;
+  var params = {};
+  for (var i = 0; i < elements.length; i++) {
+    var field = elements[i];
+    if (field.name) {
+      params[field.name] = field.value;
+    }
+  }
+  return params;
+}
 
 function handleChange(src) {
   if (src.name == "marital_status") {
@@ -129,7 +168,7 @@ function handleChange(src) {
   }
   if (src.name == "is_addicted") {
     var divAddiction = document.querySelector("#div-addiction");
-    var addiction = document.querySelector("#addiction")
+    var addiction = document.querySelector("#addiction");
     if (src.value != 0) {
       divAddiction.style.display = "grid";
       addiction.required = true;
@@ -186,12 +225,12 @@ function formatar(mascara, documento) {
   }
 }
 
-$('#cpf').blur(function () {
-  if(!validaCPF(this.value)){
-      $('#cpf').css({border: "solid 1px red"});
-      $('#cpf-error').css({display: "block"});
-  }else{
-      $('#cpf').css({border: ""});
-      $('#cpf-error').css({display: "none"});
+$("#cpf").blur(function () {
+  if (!validaCPF(this.value)) {
+    $("#cpf").css({ border: "solid 1px red" });
+    $("#cpf-error").css({ display: "block" });
+  } else {
+    $("#cpf").css({ border: "" });
+    $("#cpf-error").css({ display: "none" });
   }
-})
+});
