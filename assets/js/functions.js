@@ -127,14 +127,6 @@ $("form").submit(function (event) {
   }
 });
 
-function getIp() {
-  const ip = $.getJSON("https://api.ipify.org?format=json", function (data) {
-    return data.ip;
-  });
-
-  return ip;
-}
-
 function serializeForm() {
   var form = document.getElementById("form");
   var elements = form.elements;

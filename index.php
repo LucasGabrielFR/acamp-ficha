@@ -80,10 +80,10 @@
 
                     <!-- row -->
                     <div class="form-group col-md-3">
-                        <label for="phone"><b>Telefone(whatsapp):</b></label>
+                        <label for="contact"><b>Telefone(whatsapp):</b></label>
                         <div class="input-group">
                             <div class="input-group-text"><i class="fab fa-whatsapp"></i></div>
-                            <input type="text" class="form-control" id="phone" placeholder="XX XXXXX-XXXX" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$" name="phone" OnKeyPress="formatar('## #####-####', this)" required>
+                            <input type="text" class="form-control" id="contact" placeholder="XX XXXXX-XXXX" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$" name="contact" OnKeyPress="formatar('## #####-####', this)" required>
                         </div>
                     </div>
                     <div class="form-group col-md-3">
@@ -93,7 +93,14 @@
                             <input type="text" class="form-control" id="instagram" placeholder="Instagram" name="instagram">
                         </div>
                     </div>
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-3">
+                        <label for="facebook"><b>Facebook:</b></label>
+                        <div class="input-group">
+                            <div class="input-group-text"><i class="fab fa-facebook"></i></div>
+                            <input type="text" class="form-control" id="facebook" placeholder="Facebook" name="facebook">
+                        </div>
+                    </div>
+                    <div class="form-group col-md-3">
                         <label for="email"><b>Email:</b></label>
                         <div class="input-group">
                             <div class="input-group-text"><i class="fas fa-envelope"></i></div>
@@ -104,21 +111,21 @@
 
                     <!-- row -->
                     <div class="form-group col-md-3">
-                        <label for="date-birthday"><b>Data de Nascimento:</b></label>
-                        <input type="date" class="form-control" id="date-birthday" name="date-birthday" required>
+                        <label for="date_birthday"><b>Data de Nascimento:</b></label>
+                        <input type="date" class="form-control" id="date_birthday" name="date_birthday" required>
                     </div>
 
                     <div class="form-group col-md-3">
                         <div class="container" style="border: solid 1px; border-radius: 8px;">
                             <label for="gender"><b>Sexo:</b></label>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gender" id="male_gen" required>
+                                <input class="form-check-input" type="radio" name="gender" id="male_gen" value="0" required>
                                 <label class="form-check-label" for="male_gen">
                                     Masculino
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gender" id="fem_gen" required>
+                                <input class="form-check-input" type="radio" name="gender" id="fem_gen" value="1" required>
                                 <label class="form-check-label" for="fem_gen">
                                     Feminino
                                 </label>
@@ -186,13 +193,13 @@
                             <div class="container" style="border: solid 1px; border-radius: 8px;">
                                 <label for="gender"><b>Ele(a) já é campista?</b></label>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="is_spouse_camper" id="is_spouse_camper_yes">
+                                    <input class="form-check-input" type="radio" name="is_spouse_camper" id="is_spouse_camper_yes" value="1">
                                     <label class="form-check-label" for="is_spouse_camper_yes">
                                         Sim
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="is_spouse_camper" id="is_spouse_camper_no">
+                                    <input class="form-check-input" type="radio" name="is_spouse_camper" id="is_spouse_camper_no" value="0">
                                     <label class="form-check-label" for="is_spouse_camper_no">
                                         Não
                                     </label>
@@ -354,31 +361,31 @@
                         <div class="container" style="border: solid 1px; border-radius: 8px;">
                             <label><b>Você deseja se inscrever para qual modalidade?</b></label>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="modality" id="modality_mirim" required>
+                                <input class="form-check-input" type="radio" name="modality" id="modality_mirim" value="0" required>
                                 <label class="form-check-label" for="modality_mirim">
                                     Mirim (de 11 a 13 anos)
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="modality" id="modality_fac" required>
+                                <input class="form-check-input" type="radio" name="modality" id="modality_fac" value="1" required>
                                 <label class="form-check-label" for="modality_fac">
                                     FAC (de 15 a 18 anos)
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="modality" id="modality_juvenil" required>
+                                <input class="form-check-input" type="radio" name="modality" id="modality_juvenil" value="2" required>
                                 <label class="form-check-label" for="modality_juvenil">
                                     Juvenil (de 19 a 24 anos)
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="modality" id="modality_senior" required>
+                                <input class="form-check-input" type="radio" name="modality" id="modality_senior" value="3" required>
                                 <label class="form-check-label" for="modality_senior">
                                     Sênior (a partir de 25 anos)
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="modality" id="modality_casais" required>
+                                <input class="form-check-input" type="radio" name="modality" id="modality_casais" value="4" required>
                                 <label class="form-check-label" for="modality_casais">
                                     Casais
                                 </label>
