@@ -98,7 +98,7 @@ function validaCPF(strCPF) {
 
 $("form").submit(function (event) {
   event.preventDefault();
-  const apiAcampAdmin = "http://localhost:8989/api/register";
+  const apiAcampAdmin = "http://admin.movimentocampista.com.br/api/register";
   const cpf = document.getElementById("cpf");
   const btnSubmit = document.getElementById("btn-submit");
   btnSubmit.disabled = true;
