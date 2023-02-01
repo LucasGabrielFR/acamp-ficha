@@ -98,7 +98,7 @@ function validaCPF(strCPF) {
 
 $("form").submit(function (event) {
   event.preventDefault();
-  const apiAcampAdmin = "http://localhost:8989/register";
+  const apiAcampAdmin = "http://localhost:8989/api/register";
   const cpf = document.getElementById("cpf");
   const btnSubmit = document.getElementById("btn-submit");
   btnSubmit.disabled = true;
@@ -119,7 +119,30 @@ $("form").submit(function (event) {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        if (data.status == 203) {
+          const divInfo = document.getElementById("info");
+          divInfo.style.display = "block";
+          window.scrollTo(0, 0);
+          Toastify({
+            text: data.message,
+            style: {
+              background: "linear-gradient(to right, #ba6868, #d42828)",
+            },
+            duration: 5000,
+          }).showToast();
+          btnSubmit.disabled = false;
+        }
+
+        if(data.status == 200) {
+          clearForm();
+          window.scrollTo(0, 0);
+          Toastify({
+            text: data.message,
+            duration: 5000,
+          }).showToast();
+          const check = document.getElementById("accept");
+          check.style.backgroundColor = "red";
+        }
       })
       .catch((error) => {
         console.error(error);
@@ -127,16 +150,48 @@ $("form").submit(function (event) {
   }
 });
 
+function clearForm() {
+  const form = document.querySelector("form");
+  form.reset();
+}
+
 function serializeForm() {
   var form = document.getElementById("form");
   var elements = form.elements;
   var params = {};
   for (var i = 0; i < elements.length; i++) {
     var field = elements[i];
-    if (field.name) {
+    if (
+      field.name &&
+      !field.name.includes("familiar") &&
+      !field.name.includes("relationship")
+    ) {
       params[field.name] = field.value;
     }
   }
+  let familiar_1 = document.getElementById("familiar_1").value;
+  let relationship_1 = document.getElementById("relationship_1").value;
+  let familiar_2 = document.getElementById("familiar_2").value;
+  let relationship_2 = document.getElementById("relationship_2").value;
+  let familiar_3 = document.getElementById("familiar_3").value;
+  let relationship_3 = document.getElementById("relationship_3").value;
+  let inputs = [
+    familiar_1,
+    relationship_1,
+    familiar_2,
+    relationship_2,
+    familiar_3,
+    relationship_3,
+  ];
+  let result = {};
+  for (let i = 0; i < inputs.length; i += 2) {
+    let key = i / 2 + 1;
+    result[key] = {
+      familiar: inputs[i],
+      relationship: inputs[i + 1],
+    };
+  }
+  params.familiar = JSON.stringify(result);
   return params;
 }
 

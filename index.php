@@ -7,9 +7,26 @@
     <title>Pré-Ficha Acampamento São Padre Pio</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 </head>
 
 <body>
+    <div class="container mt-2" id="info" style="display: none; border: solid 1px; border-radius: 8px;background-color: #aae7e7">
+        <p>Caso o seu CPF já esteja cadastrado é muito provável que já tenha cadastro na nossa plataforma de campistas, então para colocar a sua ficha na lista de
+            epera de algum acampamento basta acessar pelo endereço: <a href="http://admin.movimentocampista.com.br/login">http://admin.movimentocampista.com.br/login</a>.
+            <br>
+            <br>
+            O seu login e senha será seu CPF, da seguinte forma:
+            <li>
+                <b>login:</b> 00000000000
+            </li>
+            <li>
+                <b>senha:</b> 00000000000
+            </li>
+            <br>
+            <b>Em caso de dúvidas, entre em contato pelo número: (48) 99695-4410</b>
+        </p>
+    </div>
     <div class="container mt-2 pb-2" style="border: solid 1px;">
         <div class="container text-center">
             <div class="row">
@@ -428,6 +445,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <script src="/assets/js/functions.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 </body>
 
 </html>
