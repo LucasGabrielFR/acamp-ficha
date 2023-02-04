@@ -110,7 +110,6 @@ $("form").submit(function (event) {
     btnSubmit.disabled = false;
   } else {
     var formData = serializeForm();
-    console.log(formData);
     fetch(apiAcampAdmin, {
       method: "POST",
       body: JSON.stringify(formData),

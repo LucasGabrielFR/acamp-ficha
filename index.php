@@ -375,7 +375,7 @@
 
                     <!-- row -->
                     <div class="form-group col-md-4">
-                        <div class="container" style="border: solid 1px; border-radius: 8px;">onchange(this)
+                        <div class="container" style="border: solid 1px; border-radius: 8px;">
                             <label><b>Você deseja se inscrever para qual modalidade?</b></label>
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="modality" id="modality_mirim" value="0" required>
