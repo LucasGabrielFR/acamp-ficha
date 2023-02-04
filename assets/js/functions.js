@@ -156,11 +156,6 @@ function clearForm() {
   form.reset();
 }
 
-function changer(check) {
-  console.log(check.value);
-  serializeForm();
-}
-
 function serializeForm() {
   var form = document.getElementById("form");
 
@@ -206,7 +201,6 @@ function serializeForm() {
     };
   }
   params.familiar = JSON.stringify(result);
-  console.log(params);
   return params;
 }
 

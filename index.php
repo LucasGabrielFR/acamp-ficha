@@ -378,31 +378,31 @@
                         <div class="container" style="border: solid 1px; border-radius: 8px;">onchange(this)
                             <label><b>Você deseja se inscrever para qual modalidade?</b></label>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="modality" id="modality_mirim" value="0" onchange="changer(this)" required>
+                                <input class="form-check-input" type="radio" name="modality" id="modality_mirim" value="0" required>
                                 <label class="form-check-label" for="modality_mirim">
                                     Mirim (de 11 a 13 anos)
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="modality" id="modality_fac" value="1" onchange="changer(this)" required>
+                                <input class="form-check-input" type="radio" name="modality" id="modality_fac" value="1" required>
                                 <label class="form-check-label" for="modality_fac">
                                     FAC (de 15 a 18 anos)
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="modality" id="modality_juvenil" value="2" onchange="changer(this)" required>
+                                <input class="form-check-input" type="radio" name="modality" id="modality_juvenil" value="2" required>
                                 <label class="form-check-label" for="modality_juvenil">
                                     Juvenil (de 19 a 24 anos)
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="modality" id="modality_senior" value="3" onchange="changer(this)" required>
+                                <input class="form-check-input" type="radio" name="modality" id="modality_senior" value="3" required>
                                 <label class="form-check-label" for="modality_senior">
                                     Sênior (a partir de 25 anos)
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="modality" id="modality_casais" value="4" onchange="changer(this)" required>
+                                <input class="form-check-input" type="radio" name="modality" id="modality_casais" value="4" required>
                                 <label class="form-check-label" for="modality_casais">
                                     Casais
                                 </label>
