@@ -101,6 +101,7 @@ $("form").submit(function (event) {
   const apiAcampAdmin = "http://admin.movimentocampista.com.br/api/register";
   const cpf = document.getElementById("cpf");
   const btnSubmit = document.getElementById("btn-submit");
+  const divInfo = document.getElementById("info");
   btnSubmit.disabled = true;
 
   if (!validaCPF(cpf.value)) {
@@ -109,7 +110,7 @@ $("form").submit(function (event) {
     btnSubmit.disabled = false;
   } else {
     var formData = serializeForm();
-
+    console.log(formData);
     fetch(apiAcampAdmin, {
       method: "POST",
       body: JSON.stringify(formData),
@@ -120,7 +121,6 @@ $("form").submit(function (event) {
       .then((response) => response.json())
       .then((data) => {
         if (data.status == 203) {
-          const divInfo = document.getElementById("info");
           divInfo.style.display = "block";
           window.scrollTo(0, 0);
           Toastify({
@@ -133,7 +133,8 @@ $("form").submit(function (event) {
           btnSubmit.disabled = false;
         }
 
-        if(data.status == 200) {
+        if (data.status == 200) {
+          divInfo.style.display = "none";
           clearForm();
           window.scrollTo(0, 0);
           Toastify({
@@ -155,9 +156,16 @@ function clearForm() {
   form.reset();
 }
 
+function changer(check) {
+  console.log(check.value);
+  serializeForm();
+}
+
 function serializeForm() {
   var form = document.getElementById("form");
+
   var elements = form.elements;
+
   var params = {};
   for (var i = 0; i < elements.length; i++) {
     var field = elements[i];
@@ -166,7 +174,13 @@ function serializeForm() {
       !field.name.includes("familiar") &&
       !field.name.includes("relationship")
     ) {
-      params[field.name] = field.value;
+      if (field.name == "modality" || field.name == "is_baptized" || field.name == "is_eucharist" || field.name == "is_confirmed") {
+        if (field.checked) {
+          params[field.name] = field.value;
+        }
+      } else {
+        params[field.name] = field.value;
+      }
     }
   }
   let familiar_1 = document.getElementById("familiar_1").value;
@@ -192,6 +206,7 @@ function serializeForm() {
     };
   }
   params.familiar = JSON.stringify(result);
+  console.log(params);
   return params;
 }
 
