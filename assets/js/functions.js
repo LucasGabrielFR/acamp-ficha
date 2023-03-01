@@ -133,15 +133,11 @@ $("form").submit(function (event) {
         }
 
         if (data.status == 200) {
-          divInfo.style.display = "none";
-          clearForm();
-          window.scrollTo(0, 0);
           Toastify({
             text: data.message,
             duration: 5000,
           }).showToast();
-          const check = document.getElementById("accept");
-          check.style.backgroundColor = "red";
+          window.location.href = "finish.html";
         }
       })
       .catch((error) => {
