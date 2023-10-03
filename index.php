@@ -414,7 +414,7 @@
                     <br>
                     <div class="row">
                         <p><b>Obs: No acampamento acontecem atividades físicas moderadas, por isso não é permitido a participação de
-                                gestantes e pessoas com problemas de saúde com restrição médica</b></p>
+                                gestantes e pessoas com problemas de saúde com restrição médica grave.</b></p>
                     </div>
 
                     <div class="col-md-4"></div>
