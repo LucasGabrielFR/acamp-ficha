@@ -55,6 +55,9 @@
                     <div class="form-group col-md-7">
                         <label for="name"><b>Nome Completo:</b></label>
                         <input type="text" class="form-control" id="name" placeholder="Nome Completo" name="name" required>
+                        <div class="alert alert-danger mt-1" role="alert" id="name-error" style="display: none">
+                            Nome deve ser preenchido corretamente!
+                        </div>
                     </div>
                     <div class="form-group col-md-5">
                         <label for="cpf"><b>CPF:</b></label>
@@ -69,10 +72,16 @@
                     <div class="form-group col-md-6">
                         <label for="street"><b>Rua:</b></label>
                         <input type="text" class="form-control" id="street" placeholder="Rua" name="street" required>
+                        <div class="alert alert-danger mt-1" role="alert" id="street-error" style="display: none">
+                            Rua deve ser preenchido corretamente!
+                        </div>
                     </div>
                     <div class="form-group col-md-2">
                         <label for="number"><b>Nº:</b></label>
                         <input type="number" class="form-control" id="number" placeholder="Nº" name="number">
+                        <div class="alert alert-danger mt-1" role="alert" id="number-error" style="display: none">
+                            Número deve ser preenchido corretamente!
+                        </div>
                     </div>
                     <div class="form-group col-md-4">
                         <label for="complement"><b>Complemento:</b></label>
@@ -84,14 +93,23 @@
                     <div class="form-group col-md-5">
                         <label for="district"><b>Bairro:</b></label>
                         <input type="text" class="form-control" id="district" placeholder="Bairro" name="district" required>
+                        <div class="alert alert-danger mt-1" role="alert" id="district-error" style="display: none">
+                            Bairro deve ser preenchido corretamente!
+                        </div>
                     </div>
                     <div class="form-group col-md-3">
                         <label for="state"><b>Estado:</b></label>
                         <select class="form-control" id="state" name="state" onchange="fetchMunicipios(this.value)" required></select>
+                        <div class="alert alert-danger mt-1" role="alert" id="state-error" style="display: none">
+                            Estado deve ser selecionado corretamente!
+                        </div>
                     </div>
                     <div class="form-group col-md-4">
                         <label for="city"><b>Cidade:</b></label>
                         <select class="form-control" id="city" name="city" required disabled></select>
+                        <div class="alert alert-danger mt-1" role="alert" id="city-error" style="display: none">
+                            Cidade deve ser selecionada corretamente!
+                        </div>
                     </div>
                     <!-- end row -->
 
@@ -101,6 +119,9 @@
                         <div class="input-group">
                             <div class="input-group-text"><i class="fab fa-whatsapp"></i></div>
                             <input type="text" class="form-control" id="contact" placeholder="XX XXXXX-XXXX" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$" name="contact" OnKeyPress="formatar('## #####-####', this)" required>
+                            <div class="alert alert-danger mt-1" role="alert" id="contact-error" style="display: none">
+                                Telefone deve ser preenchido corretamente!
+                            </div>
                         </div>
                     </div>
                     <div class="form-group col-md-3">
@@ -130,6 +151,9 @@
                     <div class="form-group col-md-3">
                         <label for="date_birthday"><b>Data de Nascimento:</b></label>
                         <input type="date" class="form-control" id="date_birthday" name="date_birthday" required>
+                        <div class="alert alert-danger mt-1" role="alert" id="birthday-error" style="display: none">
+                            Data de Nascimento ser preenchida corretamente!
+                        </div>
                     </div>
 
                     <div class="form-group col-md-3">
@@ -147,6 +171,9 @@
                                     Feminino
                                 </label>
                             </div>
+                            <div class="alert alert-danger mt-1" role="alert" id="gender-error" style="display: none">
+                                Gênero deve ser selecionado corretamente!
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-6"></div>
@@ -156,6 +183,9 @@
                     <div class="form-group col-md-3">
                         <label for="religion"><b>Qual sua Religião?</b></label>
                         <input type="text" class="form-control" id="religion" placeholder="Religião" name="religion" required>
+                        <div class="alert alert-danger mt-1" role="alert" id="religion-error" style="display: none">
+                            Religião deve ser preenchido corretamente!
+                        </div>
                     </div>
                     <div class="form-group col-md-3">
                         <label for="parish"><b>Paróquia que participa?</b></label>
@@ -197,6 +227,9 @@
                             <option value="6">Padre</option>
                             <option value="7">Freira</option>
                         </select>
+                        <div class="alert alert-danger mt-1" role="alert" id="marital_status-error" style="display: none">
+                            Estado Civil deve ser selecionado corretamente!
+                        </div>
                     </div>
                     <!-- end row -->
 
@@ -205,6 +238,9 @@
                         <div class="form-group col-md-5 p-1">
                             <label for="spouse_name"><b>Nome do(a) esposo(a):</b></label>
                             <input type="text" class="form-control" id="spouse_name" placeholder="Nome do(a) esposo(a):" name="spouse_name">
+                            <div class="alert alert-danger mt-1" role="alert" id="spouse_name-error" style="display: none">
+                                Nome do(a) esposo(a) ser preenchido corretamente!
+                            </div>
                         </div>
                         <div class="form-group col-md-3 p-1">
                             <div class="container" style="border: solid 1px; border-radius: 8px;">
@@ -221,6 +257,9 @@
                                         Não
                                     </label>
                                 </div>
+                                <div class="alert alert-danger mt-1" role="alert" id="is_spouse_camper-error" style="display: none">
+                                    Deve ser preenchido corretamente!
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-4"></div>
@@ -230,7 +269,7 @@
                     <!-- row -->
                     <div class="form-group col-md-3">
                         <div class="container" style="border: solid 1px; border-radius: 8px;">
-                            <label for="gender"><b>Você tem algum vício?</b></label>
+                            <label for="is_addicted"><b>Você tem algum vício?</b></label>
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="is_addicted" id="is_addicted_yes" value="1" onchange="handleChange(this)" required>
                                 <label class="form-check-label" for="is_addicted_yes">
@@ -243,12 +282,18 @@
                                     Não
                                 </label>
                             </div>
+                            <div class="alert alert-danger mt-1" role="alert" id="is_addicted-error" style="display: none">
+                                Vício deve ser preenchido corretamente!
+                            </div>
                         </div>
                     </div>
                     <div class="form-group col-md-4">
                         <div id="div-addiction" style="display: none;">
                             <label for="addiction"><b>Qual vício?</b></label>
                             <input type="text" class="form-control" id="addiction" placeholder="Vício" name="addiction">
+                        </div>
+                        <div class="alert alert-danger mt-1" role="alert" id="addiction-error" style="display: none">
+                            Vício deve ser preenchido corretamente!
                         </div>
                     </div>
                     <div class="col-md-5"></div>
@@ -270,12 +315,18 @@
                                     Não
                                 </label>
                             </div>
-                        </div>
+                            <div class="alert alert-danger mt-1" role="alert" id="has_medical_attention-error" style="display: none">
+                                Restrição deve ser preenchida corretamente!
+                            </div>
+                        </div>  
                     </div>
                     <div class="form-group col-md-4">
                         <div id="div-medical" style="display: none;">
                             <label for="medical_attention"><b>Quais restrições?</b></label>
                             <textarea class="form-control" name="medical_attention" id="medical_attention" cols="30" rows="2"></textarea>
+                            <div class="alert alert-danger mt-1" role="alert" id="medical_attention-error" style="display: none">
+                                Restrição deve ser preenchida corretamente!
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-5"></div>
@@ -296,6 +347,9 @@
                                 <label class="form-check-label" for="has_familiar_camper_no">
                                     Não
                                 </label>
+                            </div>
+                            <div class="alert alert-danger mt-1" role="alert" id="has_familiar_camper-error" style="display: none">
+                                Campo deve ser preenchido corretamente!
                             </div>
                         </div>
                     </div>
@@ -352,12 +406,18 @@
                                     Não
                                 </label>
                             </div>
+                            <div class="alert alert-danger mt-1" role="alert" id="is_retreatant-error" style="display: none">
+                                Campo deve ser preenchido corretamente!
+                            </div>
                         </div>
                     </div>
                     <div class="form-group col-md-8">
                         <div id="div-retreat" style="display: none;">
                             <label for=""><b>Qual?</b></label>
                             <input type="text" class="form-control" id="retreat" placeholder="Qual retiro?" name="retreat">
+                            <div class="alert alert-danger mt-1" role="alert" id="retreat-error" style="display: none">
+                                Campo deve ser preenchido corretamente!
+                            </div>
                         </div>
                     </div>
                     <!-- end row -->
@@ -366,10 +426,16 @@
                     <div class="form-group col-md-6">
                         <label for="how_find_camp"><b>Como ficou sabendo do acampamento?</b></label>
                         <textarea class="form-control" name="how_find_camp" id="how_find_camp" cols="30" rows="2" required></textarea>
+                        <div class="alert alert-danger mt-1" role="alert" id="has_medical_attention-error" style="display: none">
+                            Campo deve ser preenchido corretamente!
+                        </div>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="why_camp"><b>O que levou você a desejar participar do acampamento?</b></label>
                         <textarea class="form-control" name="why_camp" id="why_camp" cols="30" rows="2" required></textarea>
+                        <div class="alert alert-danger mt-1" role="alert" id="why_camp-error" style="display: none">
+                            Restrição deve ser preenchido corretamente!
+                        </div>
                     </div>
                     <!-- end row -->
 
@@ -406,6 +472,9 @@
                                 <label class="form-check-label" for="modality_casais">
                                     Casais
                                 </label>
+                            </div>
+                            <div class="alert alert-danger mt-1" role="alert" id="modality-error" style="display: none">
+                                Modalidade deve ser preenchido corretamente!
                             </div>
                         </div>
                     </div>
