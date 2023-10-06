@@ -96,6 +96,23 @@ function validaCPF(strCPF) {
   return true;
 }
 
+function validaCampo(field, errorField, type = 0) {
+  if(type==0){
+    if (field.value.length < 3) {
+      const error = document.getElementById(errorField);
+      error.style.display = "block";
+      field.focus();
+      return false;
+    }else{
+      const error = document.getElementById(errorField);
+      error.style.display = "none";
+    };
+  }else{
+    const error = document.getElementById(errorField);
+    error.style.display = "none";
+  }
+}
+
 $("form").submit(function (event) {
   event.preventDefault();
   const apiAcampAdmin = "https://admin.movimentocampista.com.br/api/register";
