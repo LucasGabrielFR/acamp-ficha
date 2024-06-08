@@ -96,6 +96,11 @@ function validaCPF(strCPF) {
   return true;
 }
 
+function onClickListaEspera() {
+  const checkbox = document.getElementById("check_fila_espera");
+  checkbox.checked = !checkbox.checked;
+}
+
 function validaCampo(field, errorField, type = 0) {
   if(type==0){
     if (field.value.length < 3) {
