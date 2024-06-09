@@ -41,6 +41,7 @@ function adicionaOptionsMunicipios(municipios) {
 window.onload = async (event) => {
   await fetchEstados();
   adicionaOptionsEstado();
+  setupOnClickListaEspera();
 };
 
 async function fetchMunicipios(option) {
@@ -96,9 +97,17 @@ function validaCPF(strCPF) {
   return true;
 }
 
-function onClickListaEspera() {
-  const checkbox = document.getElementById("check_fila_espera");
-  checkbox.checked = !checkbox.checked;
+function setupOnClickListaEspera() {
+  document
+      .getElementById('div_check_fila_espera')
+      .addEventListener('click', function (e) {
+        if (e.target.tagName !== 'INPUT') {
+          const checkbox = document.getElementById("check_fila_espera");
+          checkbox.checked = !checkbox.checked;
+          e.preventDefault();
+        }
+        return true;
+      });
 }
 
 function validaCampo(field, errorField, type = 0) {
