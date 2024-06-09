@@ -52,7 +52,7 @@
                 <input type="hidden" name="ip" id="ip" value="<?php echo $_SERVER['REMOTE_ADDR'] ?>">
                 <div class="row g-3">
                     <!-- row -->
-                    <div class="form-group col-md-12" style="cursor: pointer" onclick="onClickListaEspera()">
+                    <div class="form-group col-md-12" style="cursor: pointer" id="div_check_fila_espera">
                         <div class="container" style="border: solid 1px; border-radius: 8px; padding: 15px;">
                             <label style="padding-bottom: 10px; font-size: 20px; cursor: pointer"><b>Importante!</b></label>
                             <div class="form-check">
