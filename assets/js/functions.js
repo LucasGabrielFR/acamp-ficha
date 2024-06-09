@@ -101,6 +101,7 @@ function setupOnClickListaEspera() {
   document
       .getElementById('div_check_fila_espera')
       .addEventListener('click', function (e) {
+        // Prevent the click event from propagating to the checkbox itself
         if (e.target.tagName !== 'INPUT') {
           const checkbox = document.getElementById("check_fila_espera");
           checkbox.checked = !checkbox.checked;
