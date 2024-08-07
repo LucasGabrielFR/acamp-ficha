@@ -196,7 +196,11 @@ function serializeForm() {
       !field.name.includes("familiar") &&
       !field.name.includes("relationship")
     ) {
-      if (field.name == "modality" || field.name == "is_baptized" || field.name == "is_eucharist" || field.name == "is_confirmed") {
+      if (field.name == "modality"
+          || field.name == "is_baptized"
+          || field.name == "is_eucharist"
+          || field.name == "is_confirmed"
+          || field.name == "is_spouse_camper") {
         if (field.checked) {
           params[field.name] = field.value;
         }
