@@ -200,7 +200,8 @@ function serializeForm() {
           || field.name == "is_baptized"
           || field.name == "is_eucharist"
           || field.name == "is_confirmed"
-          || field.name == "is_spouse_camper") {
+          || field.name == "is_spouse_camper"
+          || field.name == "gender") {
         if (field.checked) {
           params[field.name] = field.value;
         }
