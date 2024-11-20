@@ -457,7 +457,7 @@
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="modality" id="modality_mirim" value="0" onchange="validaCampo(this, 'modality-error', 1)" required>
                                 <label class="form-check-label" for="modality_mirim">
-                                    Mirim (de 11 a 13 anos)
+                                    Mirim (de 09 a 12 anos)
                                 </label>
                             </div>
                             <div class="form-check">
