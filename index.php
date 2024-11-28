@@ -443,7 +443,7 @@
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="modality" id="modality_fac" value="1" onchange="validaCampo(this, 'modality-error', 1)" required>
                                 <label class="form-check-label" for="modality_fac">
-                                    FAC (de 15 a 18 anos)
+                                    FAC (de 14 a 18 anos)
                                 </label>
                             </div>
                             <div class="form-check">
