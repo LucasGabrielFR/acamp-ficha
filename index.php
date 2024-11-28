@@ -52,6 +52,26 @@
                 <input type="hidden" name="ip" id="ip" value="<?php echo $_SERVER['REMOTE_ADDR'] ?>">
                 <div class="row g-3">
                     <!-- row -->
+                    <div class="form-group col-md-12" style="cursor: pointer" id="div_check_fila_espera">
+                        <div class="container" style="border: solid 1px; border-radius: 8px; padding: 15px;">
+                            <label style="padding-bottom: 10px; font-size: 20px; cursor: pointer"><b>Importante!</b></label>
+                            <div class="form-check">
+                                <input class="form-check-input"
+                                       type="checkbox"
+                                       value="1"
+                                       id="check_fila_espera"
+                                       name="check_fila_espera"
+                                       style="cursor: pointer"
+                                       required>
+                                <label class="form-check-label" for="check_fila_espera" style="cursor: pointer">
+                                    Entendo que estou entrando em uma <strong>lista de espera</strong> e que o
+                                    preenchimento dessa pré-ficha não significa que estarei automaticamente participando
+                                    do próximo acampamento. Compreendo que quando chegar a minha vez de participar,
+                                    alguém irá entrar em contato comigo por telefone.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-group col-md-7">
                         <label for="name"><b>Nome Completo:</b></label>
                         <input type="text" class="form-control" id="name" placeholder="Nome Completo" name="name" onkeyup="validaCampo(this, 'name-error')" required>
@@ -437,7 +457,7 @@
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="modality" id="modality_mirim" value="0" onchange="validaCampo(this, 'modality-error', 1)" required>
                                 <label class="form-check-label" for="modality_mirim">
-                                    Mirim (de 11 a 13 anos)
+                                    Mirim (de 09 a 12 anos)
                                 </label>
                             </div>
                             <div class="form-check">
