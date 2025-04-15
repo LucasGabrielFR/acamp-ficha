@@ -1,5 +1,5 @@
 const urlEstados =
-  "https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome";
+    "https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome";
 
 const selectEstados = document.querySelector("#state");
 const selectMunicipios = document.querySelector("#city");
@@ -32,8 +32,8 @@ function adicionaOptionsMunicipios(municipios) {
   }
   municipios.forEach((municipio) => {
     selectMunicipios.options[selectMunicipios.options.length] = new Option(
-      municipio,
-      municipio
+        municipio,
+        municipio
     );
   });
 }
@@ -42,6 +42,30 @@ window.onload = async (event) => {
   await fetchEstados();
   adicionaOptionsEstado();
   setupOnClickListaEspera();
+  document.getElementById("date_birthday").addEventListener("change", function () {
+    const input = this.value;
+    const minorWarning = document.getElementById("minor-warning");
+
+    if (!input) {
+      minorWarning.style.display = "none";
+      return;
+    }
+
+    const birthDate = new Date(input);
+    const today = new Date();
+
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+      age--;
+    }
+
+    if (age < 18) {
+      minorWarning.style.display = "block";
+    } else {
+      minorWarning.style.display = "none";
+    }
+  });
 };
 
 async function fetchMunicipios(option) {
@@ -49,13 +73,13 @@ async function fetchMunicipios(option) {
   const urlMunicipios = `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${option}/municipios`;
   var municipios = [];
   await fetch(urlMunicipios)
-    .then((resp) => resp.json())
-    .then(function (data) {
-      let response = data;
-      return response.map(function (municipio) {
-        municipios.push(municipio.nome);
+      .then((resp) => resp.json())
+      .then(function (data) {
+        let response = data;
+        return response.map(function (municipio) {
+          municipios.push(municipio.nome);
+        });
       });
-    });
 
   adicionaOptionsMunicipios(municipios);
   selectMunicipios.disabled = false;
