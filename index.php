@@ -495,6 +495,9 @@
                     <div class="row">
                         <p><b>Obs: No acampamento acontecem atividades físicas moderadas, por isso não é permitido a participação de
                                 gestantes e pessoas com problemas de saúde com restrição médica grave.</b></p>
+                        <div id="minor-warning" class="alert alert-warning text-center" style="display: none;">
+                            <b>Aviso:</b> Pessoas menores de 18 anos precisarão de autorização formal, por escrito e assinada, de um dos pais ou do responsável legal para participar do acampamento.
+                        </div>
                     </div>
 
                     <div class="col-md-4"></div>
